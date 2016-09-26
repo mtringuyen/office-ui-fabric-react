@@ -117,14 +117,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 onClick={ this._onSelectAllClicked }
                 aria-label={ ariaLabelForSelectAllCheckbox }
                 aria-pressed={ isAllSelected }
-                type='button'
                 >
                 <Check isChecked={ isAllSelected } />
               </button>
             ) : null }
           </div>
           { groupNestingDepth > 0 ? (
-          <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll } type='button'>
+          <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
             <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isAllCollapsed
             }) } >
@@ -150,7 +149,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   aria-label={ column.ariaLabel || column.name }
                   aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   data-automationid='ColumnsHeaderColumn'
-                  type='button'
+                  data-item-key={ column.key }
                   >
 
                   { column.isFiltered && (

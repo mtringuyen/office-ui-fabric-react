@@ -19,10 +19,11 @@ const ListGridExampleCode = require('./examples/List.Grid.Example.tsx');
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let _cachedItems;
 
-export class ListPage extends React.Component<any, any> {
+export class ListPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -40,22 +41,20 @@ export class ListPage extends React.Component<any, any> {
         title='List'
         componentName='ListExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='List of 5000 grid items' isOptIn={ true } code={ ListGridExampleCode }>
               <ListGridExample items={ _cachedItems } />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='List of 5000 variable height items' isOptIn={ true } code={ ListBasicExampleCode }>
               <ListBasicExample items={ _cachedItems } />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Fixed list of 5000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
               <ListMailExample items={ _cachedItems } />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='List' />
-          ]
+          <PropertiesTableSet componentName='List' />
         }
         overview={
           <div>
@@ -71,7 +70,8 @@ export class ListPage extends React.Component<any, any> {
             </p>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
